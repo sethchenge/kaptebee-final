@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Projects - Kaptebee School</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+    <!-- Sidebar Navigation for mobile -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button id="closeSidebar" class="btn close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="academics.html">Academics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">Events & Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">News & Updates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="projects.html">Student Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="brand-text">Kaptebee School</span>
+                </a>
+                <button id="sidebarToggle" class="navbar-toggler" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="academics.html">Academics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="events.html">Events & Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">News & Updates</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="projects.html">Student Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Student Projects</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Student Projects</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Projects Filter Section -->
+        <section class="projects-filter">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="filter-buttons">
+                            <button class="btn btn-filter active" data-filter="all">All Projects</button>
+                            <button class="btn btn-filter" data-filter="science">Science</button>
+                            <button class="btn btn-filter" data-filter="technology">Technology</button>
+                            <button class="btn btn-filter" data-filter="engineering">Engineering</button>
+                            <button class="btn btn-filter" data-filter="mathematics">Mathematics</button>
+                            <button class="btn btn-filter" data-filter="innovation">Innovation</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="search-container">
+                            <input type="text" id="projectSearch" class="form-control" placeholder="Search projects...">
+                            <button id="searchBtn" class="btn btn-search"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <select id="sortProjects" class="form-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-grid">
+            <div class="container">
+                <div class="row" id="projectsContainer">
+                    <!-- Projects will be dynamically loaded here -->
+                </div>
+                <div class="text-center mt-4 mb-5">
+                    <button id="loadMoreBtn" class="btn btn-primary">Load More Projects</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Project Section -->
+        <section class="featured-project">
+            <div class="container">
+                <h2 class="section-title">Featured Project</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="featured-img">
+                            <img src="resources/irrigation scheme.jpeg" alt="Solar Powered Water Purification System" class="img-fluid rounded">
+                            <div class="award-badge">
+                                <i class="fas fa-award"></i> Award Winner
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="featured-content">
+                            <h3>Solar Powered Water Purification System</h3>
+                            <p class="project-meta">
+                                <span class="category"><i class="fas fa-tag"></i> Engineering</span>
+                                <span class="students"><i class="fas fa-users"></i> Form 4 Students</span>
+                                <span class="date"><i class="far fa-calendar-alt"></i> March 2025</span>
+                            </p>
+                            <p>This innovative project addresses the critical issue of clean water access in rural communities. The team designed a sustainable solar-powered system that can purify up to 20 liters of water per day using locally available materials and renewable energy.</p>
+                            <p>The project won first place at the National Science Fair and is now being implemented in three neighboring communities with support from local NGOs.</p>
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#featuredProjectModal">Read Full Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Project Section -->
+        <section class="submit-project">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2>Have a Project to Showcase?</h2>
+                        <p>Are you a student with an innovative project? We'd love to feature your work on our platform. Submit your project details and inspire others with your creativity and problem-solving skills.</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitProjectModal">Submit Your Project</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="submission-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-label">Projects Submitted</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">Award Winners</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">18</div>
+                                <div class="stat-label">Community Implementations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Project Competitions -->
+        <section class="upcoming-competitions">
+            <div class="container">
+                <h2 class="section-title">Upcoming Project Competitions</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="competition-card">
+                            <div class="card-header">
+                                <span class="date">June 15, 2025</span>
+                            </div>
+                            <div class="card-body">
+                                <h3>National Science Fair</h3>
+                                <p>The biggest annual science competition showcasing innovative projects from secondary schools across the country.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="competition-card">
+                            <div class="card-header">
+                                <span class="date">July 8, 2025</span>
+                            </div>
+                            <div class="card-body">
+                                <h3>Young Innovators Challenge</h3>
+                                <p>A competition focused on technology innovations that solve real-world problems in local communities.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="competition-card">
+                            <div class="card-header">
+                                <span class="date">August 22, 2025</span>
+                            </div>
+                            <div class="card-body">
+                                <h3>STEM Solutions Expo</h3>
+                                <p>Showcase your engineering and mathematical projects at this international exhibition with scholarship opportunities.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <h5>Kaptebee School</h5>
+                        <p>Nurturing Tomorrow's Leaders Today</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <h5>Quick Links</h5>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="events.html">Events & Gallery</a></li>
+                            <li><a href="news.html">News & Updates</a></li>
+                            <li><a href="projects.html">Student Projects</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Contact Information</h5>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 School Road, Kaptebee</li>
+                            <li><i class="fas fa-phone"></i> +254 123 456 789</li>
+                            <li><i class="fas fa-envelope"></i> info@kaptebeeschool.ac.ke</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Kaptebee School. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div class="modal fade" id="projectDetailModal" tabindex="-1" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectDetailModalLabel">Project Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="projectDetailContent">
+                    <!-- Content will be dynamically loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Project Modal -->
+    <div class="modal fade" id="featuredProjectModal" tabindex="-1" aria-labelledby="featuredProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="featuredProjectModalLabel">Solar Powered Water Purification System</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="featured-project-gallery mb-4">
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <img src="resources/irrigation scheme.jpeg" alt="Solar Powered Water Purification System" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-6 col-md-12 mb-3">
+                                        <img src="resources/sprint challange.jpeg" alt="Project Component" class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <img src="resources/basketball competition.png" alt="Project Testing" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h4>Project Overview</h4>
+                        <p>This innovative project addresses the critical issue of clean water access in rural communities. The team designed a sustainable solar-powered system that can purify up to 20 liters of water per day using locally available materials and renewable energy.</p>
+                        
+                        <h4>Problem Statement</h4>
+                        <p>Access to clean drinking water remains a significant challenge for many rural communities in our region. Traditional water purification methods are often expensive, require electricity, or utilize chemicals that may not be readily available.</p>
+                        
+                        <h4>Solution</h4>
+                        <p>Our system uses a combination of solar distillation and filtration technologies to purify water from local sources. The process involves:</p>
+                        <ol>
+                            <li>Initial filtration through locally sourced sand and charcoal</li>
+                            <li>Solar distillation chamber that evaporates and condenses water</li>
+                            <li>UV light exposure powered by small solar panels to kill remaining pathogens</li>
+                            <li>Storage in a clean container with controlled dispensing mechanism</li>
+                        </ol>
+                        
+                        <h4>Impact</h4>
+                        <p>The project has been successfully implemented in three neighboring communities, providing clean water to approximately 150 people daily. Local NGOs have provided funding to scale the project to additional communities.</p>
+                        
+                        <h4>Student Team</h4>
+                        <ul>
+                            <li>Mary Wanjiku - Team Leader</li>
+                            <li>John Kiprop - Technical Design</li>
+                            <li>Sarah Omondi - Research & Documentation</li>
+                            <li>David Mwangi - Construction & Testing</li>
+                        </ul>
+                        
+                        <h4>Awards & Recognition</h4>
+                        <ul>
+                            <li>First Place - National Science Fair 2025</li>
+                            <li>Innovation Award - Young Scientists Kenya</li>
+                            <li>Community Impact Recognition - County Government</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Download Case Study</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Project Modal -->
+    <div class="modal fade" id="submitProjectModal" tabindex="-1" aria-labelledby="submitProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="submitProjectModalLabel">Submit Your Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="projectSubmissionForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="projectTitle" class="form-label">Project Title</label>
+                                <input type="text" class="form-control" id="projectTitle" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="projectCategory" class="form-label">Project Category</label>
+                                <select class="form-select" id="projectCategory" required>
+                                    <option value="" selected disabled>Select category</option>
+                                    <option value="science">Science</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="mathematics">Mathematics</option>
+                                    <option value="innovation">Innovation</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="studentName" class="form-label">Student Name(s)</label>
+                                <input type="text" class="form-control" id="studentName" placeholder="Separate multiple names with commas" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="studentClass" class="form-label">Class/Form</label>
+                                <select class="form-select" id="studentClass" required>
+                                    <option value="" selected disabled>Select class</option>
+                                    <option value="Form 1">Form 1</option>
+                                    <option value="Form 2">Form 2</option>
+                                    <option value="Form 3">Form 3</option>
+                                    <option value="Form 4">Form 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectDescription" class="form-label">Project Description</label>
+                            <textarea class="form-control" id="projectDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectProblem" class="form-label">Problem Statement</label>
+                            <textarea class="form-control" id="projectProblem" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectSolution" class="form-label">Solution/Approach</label>
+                            <textarea class="form-control" id="projectSolution" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectResults" class="form-label">Results/Impact</label>
+                            <textarea class="form-control" id="projectResults" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectImage" class="form-label">Project Images (Max. 3)</label>
+                            <input class="form-control" type="file" id="projectImage" multiple accept="image/*">
+                            <div class="form-text">Accepted formats: JPG, PNG, WEBP (Max 5MB each)</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherSupervisor" class="form-label">Teacher Supervisor</label>
+                            <input type="text" class="form-control" id="teacherSupervisor" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Contact Email</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitProjectBtn">Submit Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Submission Successful</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle success-icon"></i>
+                    </div>
+                    <p>Thank you for submitting your project! Our team will review your submission and get back to you within 3-5 working days.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="projects.js"></script>
+</body>
+</html>

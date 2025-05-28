@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Kaptebee School</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact-styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation for mobile -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button id="closeSidebar" class="btn close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="academics.html">Academics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">Events & Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">News & Updates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Student Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="brand-text">Kaptebee School</span>
+                </a>
+                <button id="sidebarToggle" class="navbar-toggler" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="academics.html">Academics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="events.html">Events & Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">News & Updates</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">Student Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contact Page Header -->
+        <section class="contact-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center" data-aos="fade-up">
+                        <h1>Contact Us</h1>
+                        <p class="lead">We'd love to hear from you! Reach out to us using any of the methods below.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="contact-info">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="contact-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Our Location</h3>
+                            <p>Kaptebee Secondary School</p>
+                            <p>P.O. Box 123, Kaptebee</p>
+                            <p>Bomet County, Kenya</p>
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline-success mt-3">
+                                <i class="fas fa-directions"></i> Get Directions
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="contact-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3>Call Us</h3>
+                            <p>Main Office: +254 700 123 456</p>
+                            <p>Admissions: +254 711 234 567</p>
+                            <p>Student Affairs: +254 722 345 678</p>
+                            <a href="tel:+254700123456" class="btn btn-outline-success mt-3">
+                                <i class="fas fa-phone"></i> Call Now
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="contact-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Us</h3>
+                            <p>General Inquiries: info@kaptebee.ac.ke</p>
+                            <p>Admissions: admissions@kaptebee.ac.ke</p>
+                            <p>Principal: principal@kaptebee.ac.ke</p>
+                            <a href="mailto:info@kaptebee.ac.ke" class="btn btn-outline-success mt-3">
+                                <i class="fas fa-envelope"></i> Send Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-form-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="map-container">
+                            <!-- Map placeholder - in production, replace with actual map embed -->
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>Interactive map would be displayed here</p>
+                            </div>
+                            <div class="social-media-links">
+                                <h4>Connect With Us</h4>
+                                <div class="social-icons">
+                                    <a href="https://facebook.com" target="_blank" class="social-icon facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://twitter.com" target="_blank" class="social-icon twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="https://instagram.com" target="_blank" class="social-icon instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://youtube.com" target="_blank" class="social-icon youtube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="contact-form-container">
+                            <h2>Send Us a Message</h2>
+                            <form id="contactForm" class="contact-form">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="nameInput" placeholder="Your Name" required>
+                                    <label for="nameInput">Your Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="emailInput" placeholder="Your Email" required>
+                                    <label for="emailInput">Your Email</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="tel" class="form-control" id="phoneInput" placeholder="Your Phone">
+                                    <label for="phoneInput">Phone Number (Optional)</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="subjectSelect" required>
+                                        <option value="" selected disabled>Select a subject</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="admission">Admission Information</option>
+                                        <option value="academics">Academic Programs</option>
+                                        <option value="events">Events & Visits</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="subjectSelect">Subject</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="messageInput" placeholder="Your Message" style="height: 150px" required></textarea>
+                                    <label for="messageInput">Your Message</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="newsletterCheck">
+                                    <label class="form-check-label" for="newsletterCheck">
+                                        Subscribe to our newsletter for updates
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-lg w-100 submit-btn">
+                                    <i class="fas fa-paper-plane"></i> Send Message
+                                </button>
+                            </form>
+                            <div class="form-response" id="formResponse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="text-center section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="accordion" id="contactFaq">
+                            <!-- FAQ Item 1 -->
+                            <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                                <h2 class="accordion-header" id="faqOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What are the school visiting hours?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#contactFaq">
+                                    <div class="accordion-body">
+                                        Parents and visitors are welcome to visit our campus Monday through Friday from 8:00 AM to 4:00 PM. For tours or meetings with administration, we recommend scheduling an appointment through our main office.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- FAQ Item 2 -->
+                            <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                                <h2 class="accordion-header" id="faqTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How can I apply for admission to Kaptebee School?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#contactFaq">
+                                    <div class="accordion-body">
+                                        To apply for admission, you can download the application form from our website or pick one up from our admissions office. Complete applications should be submitted along with required documents to our admissions department. For more details, please contact our admissions office directly.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- FAQ Item 3 -->
+                            <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                                <h2 class="accordion-header" id="faqThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        How can parents get involved in school activities?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#contactFaq">
+                                    <div class="accordion-body">
+                                        Parents can get involved through our Parent-Teacher Association (PTA), volunteering for school events, participating in parent workshops, or supporting school projects. We regularly communicate opportunities for involvement through our newsletter and parent portal.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- FAQ Item 4 -->
+                            <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                                <h2 class="accordion-header" id="faqFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        Does the school offer transportation services?
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="faqFour" data-bs-parent="#contactFaq">
+                                    <div class="accordion-body">
+                                        Yes, we offer transportation services for students within designated areas. Bus routes, schedules, and fees can be obtained from our transportation department. For specific inquiries about transportation, please contact our office directly.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center" data-aos="zoom-in">
+                        <h2>Ready to Join the Kaptebee School Community?</h2>
+                        <p class="lead">Take the first step towards a transformative educational experience.</p>
+                        <div class="cta-buttons">
+                            <a href="tel:+254700123456" class="btn btn-light btn-lg m-2">
+                                <i class="fas fa-phone"></i> Call Us Now
+                            </a>
+                            <a href="mailto:info@kaptebee.ac.ke" class="btn btn-outline-light btn-lg m-2">
+                                <i class="fas fa-envelope"></i> Email Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <h4>Kaptebee School</h4>
+                        <p>Nurturing Tomorrow's Leaders Today</p>
+                        <p>
+                            <i class="fas fa-map-marker-alt me-2"></i> P.O. Box 123, Kaptebee<br>
+                            <i class="fas fa-phone me-2"></i> +254 700 123 456<br>
+                            <i class="fas fa-envelope me-2"></i> info@kaptebee.ac.ke
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="events.html">Events & Gallery</a></li>
+                            <li><a href="news.html">News & Updates</a></li>
+                            <li><a href="projects.html">Student Projects</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4>Stay Connected</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        <div class="newsletter mt-3">
+                            <h5>Subscribe to our Newsletter</h5>
+                            <form class="newsletter-form">
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="copyright">© 2025 Kaptebee School. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="footer-links-secondary">
+                            <a href="#">Privacy Policy</a> | 
+                            <a href="#">Terms of Service</a> | 
+                            <a href="#">Sitemap</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
+    <script src="contact-scripts.js"></script>
+</body>
+</html>

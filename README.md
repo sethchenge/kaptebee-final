@@ -1,2 +1,1 @@
-# kaptebee-final
-school website
+# Kaptebee-school
