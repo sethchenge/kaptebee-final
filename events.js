@@ -1,375 +1,517 @@
-// events.js - Interactive functionality for Kaptebee Secondary School Events & Gallery
+// Events & Gallery JavaScript - Enhanced with smooth scrolling and effects
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Sidebar Navigation
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const closeSidebar = document.getElementById('closeSidebar');
     
-    if (sidebarToggle) {
+    // Initialize all components
+    initSidebar();
+    initGalleryFilter();
+    initScrollEffects();
+    initBackToTop();
+    initTimelineAnimation();
+    initGalleryAnimation();
+    initLoadMore();
+    initModalEnhancements();
+    initSmoothScrolling();
+    
+    // Sidebar functionality
+    function initSidebar() {
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        
+        // Create overlay
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        `;
+        document.body.appendChild(overlay);
+        
+        // Toggle sidebar
         sidebarToggle.addEventListener('click', function() {
             sidebar.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
+            overlay.style.opacity = '1';
+            overlay.style.visibility = 'visible';
+            document.body.style.overflow = 'hidden';
         });
-    }
-    
-    if (closeSidebar) {
-        closeSidebar.addEventListener('click', function() {
+        
+        // Close sidebar
+        function closeSidebarFunc() {
             sidebar.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        });
-    }
-    
-    // Click outside sidebar to close
-    document.addEventListener('click', function(event) {
-        if (sidebar.classList.contains('active') && 
-            !sidebar.contains(event.target) && 
-            event.target !== sidebarToggle) {
-            sidebar.classList.remove('active');
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
             document.body.style.overflow = 'auto';
         }
-    });
-    
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const closeSidebar = document.getElementById('closeSidebar');
-    const navbar = document.querySelector('.navbar');
-
-    // Smooth navbar transition on scroll
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Sidebar toggle functionality
-    sidebarToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('active');
-
-        // Overlay when sidebar is active
-        if (sidebar.classList.contains('active')) {
-            const overlay = document.createElement('div');
-            overlay.classList.add('sidebar-overlay');
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-            overlay.style.zIndex = '1040';
-            overlay.style.opacity = '0';
-            overlay.style.transition = 'opacity 0.3s ease';
-            document.body.appendChild(overlay);
-
-            setTimeout(() => { overlay.style.opacity = '1'; }, 10);
-
-            overlay.addEventListener('click', function() {
-                sidebar.classList.remove('active');
-                this.style.opacity = '0';
-                setTimeout(() => { document.body.removeChild(this); }, 300);
-            });
-        } else {
-            const overlay = document.querySelector('.sidebar-overlay');
-            if (overlay) {
-                overlay.style.opacity = '0';
-                setTimeout(() => { document.body.removeChild(overlay); }, 300);
+        
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        overlay.addEventListener('click', closeSidebarFunc);
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                closeSidebarFunc();
             }
-        }
-    });
-
-    // Close sidebar button
-    closeSidebar.addEventListener('click', function() {
-        sidebar.classList.remove('active');
-
-        const overlay = document.querySelector('.sidebar-overlay');
-        if (overlay) {
-            overlay.style.opacity = '0';
-            setTimeout(() => { document.body.removeChild(overlay); }, 300);
-        }
-    });
-});
-
-
-
-
-
-    // Back to Top Button
-    const backToTopButton = document.getElementById('backToTop');
+        });
+    }
     
-    if (backToTopButton) {
+    // Gallery filter functionality
+    function initGalleryFilter() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter items with animation
+                galleryItems.forEach((item, index) => {
+                    const shouldShow = filter === 'all' || item.classList.contains(filter);
+                    
+                    if (shouldShow) {
+                        setTimeout(() => {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.classList.add('show');
+                            }, 50);
+                        }, index * 100);
+                    } else {
+                        item.classList.remove('show');
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Initialize gallery items
+        setTimeout(() => {
+            galleryItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, index * 100);
+            });
+        }, 500);
+    }
+    
+    // Scroll effects and animations
+    function initScrollEffects() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+        
+        // Observe elements for animation
+        const elementsToAnimate = document.querySelectorAll('.event-card, .section-title, .hero-title, .hero-subtitle');
+        elementsToAnimate.forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            .event-card, .section-title, .hero-title, .hero-subtitle {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.6s ease;
+            }
+            
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            
+            .hero-title, .hero-subtitle {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // Back to top button
+    function initBackToTop() {
+        const backToTopBtn = document.getElementById('backToTop');
+        
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
+                backToTopBtn.classList.add('show');
             } else {
-                backToTopButton.classList.remove('show');
+                backToTopBtn.classList.remove('show');
             }
         });
-    
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        
+        backToTopBtn.addEventListener('click', function() {
+            smoothScrollTo(0, 800);
         });
     }
     
-    // Gallery Filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Update active filter button
-            filterBtns.forEach(filterBtn => filterBtn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Filter gallery items
-            galleryItems.forEach(item => {
-                if (filterValue === 'all') {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 50);
-                } else if (item.classList.contains(filterValue)) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+    // Timeline animation
+    function initTimelineAnimation() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
                 }
             });
+        }, {
+            threshold: 0.3
         });
-    });
+        
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+    }
     
-    // Load More Gallery Items
-    const loadMoreButton = document.getElementById('loadMoreGallery');
-    let itemsToShow = 6; // Initial number of items shown
+    // Gallery animation on scroll
+    function initGalleryAnimation() {
+        const galleryCards = document.querySelectorAll('.gallery-card');
+        
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        galleryCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            galleryObserver.observe(card);
+        });
+    }
     
-    // Hide items beyond initial count
-    if (galleryItems.length > itemsToShow) {
-        for (let i = itemsToShow; i < galleryItems.length; i++) {
-            galleryItems[i].style.display = 'none';
+    // Load more gallery functionality
+    function initLoadMore() {
+        const loadMoreBtn = document.getElementById('loadMoreGallery');
+        const hiddenItems = [
+            {
+                category: 'academics',
+                title: 'Laboratory Session',
+                description: 'Advanced chemistry laboratory work',
+                image: 'resources/lab-session.jpg'
+            },
+            {
+                category: 'sports',
+                title: 'Swimming Competition',
+                description: 'Inter-school swimming championship',
+                image: 'resources/swimming.jpg'
+            },
+            {
+                category: 'cultural',
+                title: 'Drama Festival',
+                description: 'Annual school drama performance',
+                image: 'resources/drama.jpg'
+            },
+            {
+                category: 'events',
+                title: 'Science Fair',
+                description: 'Student innovation showcase',
+                image: 'resources/science-fair.jpg'
+            },
+            {
+                category: 'sports',
+                title: 'Basketball Tournament',
+                description: 'Regional basketball championships',
+                image: 'resources/basketball.jpg'
+            },
+            {
+                category: 'cultural',
+                title: 'Music Concert',
+                description: 'Annual music evening performance',
+                image: 'resources/music-concert.jpg'
+            }
+        ];
+        
+        let itemsLoaded = 0;
+        const itemsPerLoad = 3;
+        
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                const galleryContainer = document.querySelector('.gallery-grid');
+                const currentFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                
+                // Filter items based on current filter
+                const itemsToShow = hiddenItems.slice(itemsLoaded, itemsLoaded + itemsPerLoad)
+                    .filter(item => currentFilter === 'all' || item.category === currentFilter);
+                
+                itemsToShow.forEach((item, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = `gallery-item gallery-card ${item.category}`;
+                    galleryItem.innerHTML = `
+                        <div class="gallery-image">
+                            <img src="${item.image}" alt="${item.title}" loading="lazy">
+                            <div class="gallery-overlay">
+                                <h3>${item.title}</h3>
+                                <p>${item.description}</p>
+                                <button class="view-btn" onclick="openModal('${item.image}', '${item.title}', '${item.description}')">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add with animation
+                    galleryItem.style.opacity = '0';
+                    galleryItem.style.transform = 'translateY(50px)';
+                    galleryContainer.appendChild(galleryItem);
+                    
+                    setTimeout(() => {
+                        galleryItem.style.transition = 'all 0.6s ease';
+                        galleryItem.style.opacity = '1';
+                        galleryItem.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+                
+                itemsLoaded += itemsPerLoad;
+                
+                // Hide button if no more items
+                if (itemsLoaded >= hiddenItems.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            });
         }
     }
     
-    if (loadMoreButton) {
-        loadMoreButton.addEventListener('click', function() {
-            // Show 3 more items
-            const hiddenItems = Array.from(galleryItems).filter(item => item.style.display === 'none');
-            
-            for (let i = 0; i < 3 && i < hiddenItems.length; i++) {
-                hiddenItems[i].style.display = 'block';
-                // Add animation
-                setTimeout(() => {
-                    hiddenItems[i].style.opacity = '1';
-                    hiddenItems[i].style.transform = 'scale(1)';
-                }, 50 * i);
-            }
-            
-            // Hide load more button if all items are shown
-            if (hiddenItems.length <= 3) {
-                loadMoreButton.style.display = 'none';
-            }
-        });
-    }
-    
-    // Lightbox Configuration
-    lightbox.option({
-        'resizeDuration': 300,
-        'wrapAround': true,
-        'disableScrolling': true,
-        'fadeDuration': 300,
-        'albumLabel': "Image %1 of %2"
-    });
-    
-    // Event Card Hover Effects
-    const eventCards = document.querySelectorAll('.event-card');
-    
-    eventCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.querySelector('.event-date').style.transform = 'scale(1.1)';
+    // Modal enhancements
+    function initModalEnhancements() {
+        // Create modal HTML if it doesn't exist
+        if (!document.getElementById('imageModal')) {
+            const modalHTML = `
+                <div id="imageModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <img id="modalImage" src="" alt="">
+                        <div class="modal-info">
+                            <h3 id="modalTitle"></h3>
+                            <p id="modalDescription"></p>
+                        </div>
+                        <div class="modal-nav">
+                            <button id="prevImage">&#8249;</button>
+                            <button id="nextImage">&#8250;</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+        
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Close modal functionality
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
-        card.addEventListener('mouseleave', function() {
-            this.querySelector('.event-date').style.transform = 'scale(1)';
-        });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Adjust for navbar height
-                    behavior: 'smooth'
-                });
-                
-                // Close sidebar if open
-                if (sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
-    });
-    
-    // Timeline Animation
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-    
-    function animateTimeline() {
-        timelineItems.forEach(item => {
-            if (isInViewport(item)) {
-                item.classList.add('animated');
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }
-        });
-    }
-    
-    // Set initial state for timeline items
-    timelineItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'all 0.5s ease-in-out';
-    });
-    
-    // Run on scroll
-    window.addEventListener('scroll', animateTimeline);
-    // Run on load
-    animateTimeline();
-    
-    // Modal event details - Open specific tab
-    const eventModals = document.querySelectorAll('.modal');
-    
-    eventModals.forEach(modal => {
-        modal.addEventListener('shown.bs.modal', function() {
-            // Add slight animation to modal content
-            const modalContent = this.querySelector('.modal-content');
-            modalContent.style.transform = 'translateY(20px)';
-            modalContent.style.opacity = '0';
-            
-            setTimeout(() => {
-                modalContent.style.transition = 'all 0.3s ease-out';
-                modalContent.style.transform = 'translateY(0)';
-                modalContent.style.opacity = '1';
-            }, 50);
-        });
-    });
-    
-    // Add calendar integration for events
-    const addToCalendarButtons = document.querySelectorAll('.add-to-calendar');
-    
-    addToCalendarButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const eventTitle = this.getAttribute('data-title');
-            const eventDate = this.getAttribute('data-date');
-            const eventTime = this.getAttribute('data-time');
-            const eventLocation = this.getAttribute('data-location');
-            
-            // Create calendar file download (simple implementation)
-            alert(`Event "${eventTitle}" would be added to your calendar on ${eventDate} at ${eventTime} in ${eventLocation}`);
-            
-            // In a real implementation, you would generate an .ics file
-            // and trigger its download or open a calendar integration
-        });
-    });
-    
-    // Interactive countdown for upcoming events
-    function updateCountdowns() {
-        const eventCards = document.querySelectorAll('.event-card');
         
-        eventCards.forEach(card => {
-            const dateSpan = card.querySelector('.event-date .day');
-            const monthSpan = card.querySelector('.event-date .month');
-            
-            if (dateSpan && monthSpan) {
-                const day = parseInt(dateSpan.textContent);
-                const month = getMonthFromString(monthSpan.textContent);
-                
-                // Create event date
-                const eventDate = new Date();
-                eventDate.setMonth(month);
-                eventDate.setDate(day);
-                
-                // If the event is past for this year, set it to next year
-                if (eventDate < new Date()) {
-                    eventDate.setFullYear(eventDate.getFullYear() + 1);
-                }
-                
-                // Calculate days remaining
-                const today = new Date();
-                const diffTime = Math.abs(eventDate - today);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                // Add countdown badge if not already present
-                let countdownBadge = card.querySelector('.countdown-badge');
-                
-                if (!countdownBadge) {
-                    countdownBadge = document.createElement('div');
-                    countdownBadge.className = 'countdown-badge';
-                    countdownBadge.style.position = 'absolute';
-                    countdownBadge.style.top = '20px';
-                    countdownBadge.style.left = '20px';
-                    countdownBadge.style.backgroundColor = '#ff9800';
-                    countdownBadge.style.color = 'white';
-                    countdownBadge.style.padding = '5px 10px';
-                    countdownBadge.style.borderRadius = '20px';
-                    countdownBadge.style.fontSize = '0.75rem';
-                    countdownBadge.style.fontWeight = 'bold';
-                    card.appendChild(countdownBadge);
-                }
-                
-                countdownBadge.textContent = `${diffDays} days left`;
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
+        });
+        
+        // Add modal styles
+        const modalStyles = document.createElement('style');
+        modalStyles.textContent = `
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.9);
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .modal-content {
+                position: relative;
+                margin: 5% auto;
+                padding: 20px;
+                width: 90%;
+                max-width: 800px;
+                background: white;
+                border-radius: 10px;
+                animation: slideIn 0.3s ease;
+            }
+            
+            .close-modal {
+                position: absolute;
+                right: 15px;
+                top: 10px;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            
+            #modalImage {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+            
+            .modal-info {
+                padding: 15px 0;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes slideIn {
+                from { transform: translateY(-50px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(modalStyles);
+    }
+    
+    // Smooth scrolling functionality
+    function initSmoothScrolling() {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed header
+                    smoothScrollTo(offsetTop, 800);
+                }
+            });
         });
     }
     
-    function getMonthFromString(monthStr) {
-        const months = {
-            'JAN': 0, 'FEB': 1, 'MAR': 2, 'APR': 3, 'MAY': 4, 'JUN': 5,
-            'JUL': 6, 'AUG': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DEC': 11
-        };
-        return months[monthStr.toUpperCase()];
+    // Utility function for smooth scrolling
+    function smoothScrollTo(targetPosition, duration) {
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+        
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+        
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+        
+        requestAnimationFrame(animation);
     }
     
-    // Update countdowns on page load
-    updateCountdowns();
+    // Parallax effect for hero sections
+    function initParallaxEffect() {
+        const parallaxElements = document.querySelectorAll('.parallax-bg');
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            parallaxElements.forEach(element => {
+                element.style.transform = `translateY(${rate}px)`;
+            });
+        });
+    }
     
-    // Dynamic year in footer copyright
-    document.querySelectorAll('.copyright').forEach(element => {
-        const currentYear = new Date().getFullYear();
-        element.innerHTML = element.innerHTML.replace(/\d{4}/, currentYear);
-    });
+    // Initialize additional effects
+    initParallaxEffect();
+    
+    // Lazy loading for images
+    function initLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+    
+    initLazyLoading();
 });
+
+// Global function to open modal (called from HTML)
+function openModal(imageSrc, title, description) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    
+    modalImage.src = imageSrc;
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Performance optimization - Throttle scroll events
+function throttle(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Apply throttling to scroll-heavy functions
+window.addEventListener('scroll', throttle(() => {
+    // Any scroll-heavy operations can be placed here
+}, 16)); // ~60fps

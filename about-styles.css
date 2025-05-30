@@ -35,6 +35,128 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
+
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed);
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-light);
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    background-color: var(--primary-light);
+    color: var(--text-light);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.brand-text {
+    position: relative;
+}
+
+.brand-text::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-light);
+    transform: scaleX(0);
+    transition: transform var(--transition-speed);
+    transform-origin: right;
+}
+
+.navbar-brand:hover .brand-text::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background-color: var(--primary-dark);
+    z-index: 1050;
+    transition: all var(--transition-speed);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-btn {
+    color: var(--text-light);
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.close-btn:hover {
+    color: var(--bg-light);
+}
+
+.sidebar-content {
+    padding: 1rem 0;
+}
+
+.sidebar .nav-link {
+    color: var(--text-light);
+    padding: 1rem 1.5rem;
+    transition: all var(--transition-speed);
+    border-left: 4px solid transparent;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--primary-color);
+    border-left-color: var(--text-light);
+}
+
+/* Main Content */
+.main-content {
+    transition: margin-left var(--transition-speed);
+}
+
+.main-content.sidebar-active {
+    margin-left: 280px;
+}
+
+
+
 /* Our Story Section */
 .our-story {
     padding: 4rem 0;

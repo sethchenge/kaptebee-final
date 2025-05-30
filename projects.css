@@ -444,7 +444,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-gray);
+    background-color: var(--primary-dark);
     color: var(--white);
     padding: 4rem 0 0;
     margin-top: auto;
