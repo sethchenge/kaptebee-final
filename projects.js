@@ -304,6 +304,263 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    //student who participated in the camara projects
+// Student Profiles JavaScript for Responsive Behavior
+document.addEventListener('DOMContentLoaded', function() {
+    const profilesSection = document.querySelector('.student-profiles');
+    const profileItems = document.querySelectorAll('.profile-item');
+    
+    // Responsive grid adjustment
+    function adjustProfilesLayout() {
+        const screenWidth = window.innerWidth;
+        const profilesRow = document.querySelector('.profiles-row');
+        
+        if (screenWidth <= 576) {
+            // Mobile: Stack vertically with animation
+            profilesRow.style.flexDirection = 'column';
+            profilesRow.style.alignItems = 'center';
+            
+            // Add staggered animation for mobile
+            profileItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+                item.classList.add('fade-in-up');
+            });
+        } else if (screenWidth <= 768) {
+            // Tablet: 2 columns
+            profilesRow.style.flexDirection = 'row';
+            profilesRow.style.flexWrap = 'wrap';
+            profilesRow.style.justifyContent = 'center';
+            
+            profileItems.forEach((item, index) => {
+                item.style.flex = '0 0 45%';
+                item.style.marginBottom = '2rem';
+            });
+        } else if (screenWidth <= 992) {
+            // Small desktop: 3-4 per row
+            profilesRow.style.flexDirection = 'row';
+            profilesRow.style.flexWrap = 'wrap';
+            profilesRow.style.justifyContent = 'space-around';
+            
+            profileItems.forEach((item) => {
+                item.style.flex = '0 0 30%';
+                item.style.marginBottom = '2rem';
+            });
+        } else {
+            // Large desktop: Single row
+            profilesRow.style.flexDirection = 'row';
+            profilesRow.style.flexWrap = 'wrap';
+            profilesRow.style.justifyContent = 'space-between';
+            
+            profileItems.forEach((item) => {
+                item.style.flex = '1';
+                item.style.marginBottom = '0';
+            });
+        }
+    }
+    
+    // Intersection Observer for scroll animations
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Stagger animation for profile items
+                    const profiles = entry.target.querySelectorAll('.profile-item');
+                    profiles.forEach((profile, index) => {
+                        setTimeout(() => {
+                            profile.classList.add('slide-in');
+                        }, index * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        if (profilesSection) {
+            observer.observe(profilesSection);
+        }
+    }
+    
+    // Touch/swipe functionality for mobile
+    function initTouchInteractions() {
+        let startX = 0;
+        let currentX = 0;
+        let profilesRow = document.querySelector('.profiles-row');
+        
+        if (window.innerWidth <= 576) {
+            profileItems.forEach(item => {
+                item.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                item.addEventListener('touchmove', (e) => {
+                    currentX = e.touches[0].clientX;
+                });
+                
+                item.addEventListener('touchend', () => {
+                    const diff = startX - currentX;
+                    
+                    // Add subtle feedback for touch interactions
+                    if (Math.abs(diff) > 10) {
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            item.style.transform = '';
+                        }, 150);
+                    }
+                });
+            });
+        }
+    }
+    
+    // Profile image error handling
+    function handleImageErrors() {
+        const profileImages = document.querySelectorAll('.profile-img');
+        
+        profileImages.forEach(img => {
+            img.addEventListener('error', function() {
+                // Create a placeholder with initials
+                const name = this.alt || 'Student';
+                const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+                
+                // Create a canvas for the placeholder
+                const canvas = document.createElement('canvas');
+                canvas.width = 92;
+                canvas.height = 92;
+                const ctx = canvas.getContext('2d');
+                
+                // Draw background
+                ctx.fillStyle = '#28a745';
+                ctx.fillRect(0, 0, 92, 92);
+                
+                // Draw initials
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(initials, 46, 46);
+                
+                // Replace the image with the canvas
+                this.src = canvas.toDataURL();
+            });
+        });
+    }
+    
+    // Lazy loading for better performance
+    function initLazyLoading() {
+        const profileImages = document.querySelectorAll('.profile-img');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            });
+            
+            profileImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    }
+    
+    // Smooth hover effects
+    function initHoverEffects() {
+        profileItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    }
+    
+    // Resize handler with debouncing
+    let resizeTimeout;
+    function handleResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            adjustProfilesLayout();
+        }, 250);
+    }
+    
+    // Initialize all functions
+    adjustProfilesLayout();
+    initScrollAnimations();
+    initTouchInteractions();
+    handleImageErrors();
+    initLazyLoading();
+    initHoverEffects();
+    
+    // Event listeners
+    window.addEventListener('resize', handleResize);
+    
+    // Add CSS animations dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .student-profiles {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .profile-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease-out;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+
     // Load More button functionality
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     if (loadMoreBtn) {
