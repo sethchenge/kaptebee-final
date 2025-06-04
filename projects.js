@@ -88,13 +88,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // Sample project data
+    // Sample project data - Updated with images array
     const projects = [
         {
             id: 1,
             title: "Smart Agricultural Irrigation System",
             category: "technology",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/irrigation-main.jpg", // Keep this for the main gallery
+            images: [
+                "images/projects/irrigation-main.jpg",
+                "images/projects/irrigation-sensors.jpg", 
+                "images/projects/irrigation-system.jpg"
+            ],
             students: "Form 3 Students",
             date: "April 2025",
             description: "An automated system that uses soil moisture sensors to optimize water usage in crop farming.",
@@ -104,7 +109,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 2,
             title: "Biodegradable Plastic from Cassava Starch",
             category: "science",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/cassava-main.jpg",
+            images: [
+                "images/projects/cassava-main.jpg",
+                "images/projects/cassava-process.jpg",
+                "images/projects/cassava-result.jpg"
+            ],
             students: "Form 4 Students",
             date: "March 2025",
             description: "Research and development of an eco-friendly alternative to conventional plastic using locally available cassava.",
@@ -114,7 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3,
             title: "Mathematical Model for Traffic Flow Optimization",
             category: "mathematics",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/traffic-main.jpg",
+            images: [
+                "images/projects/traffic-main.jpg",
+                "images/projects/traffic-model.jpg",
+                "images/projects/traffic-analysis.jpg"
+            ],
             students: "Form 4 Students",
             date: "February 2025",
             description: "A statistical approach to improving traffic flow at major intersections using mathematical algorithms.",
@@ -124,7 +139,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 4,
             title: "Solar-Powered Mobile Phone Charger",
             category: "engineering",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/solar-main.jpg",
+            images: [
+                "images/solar-main.jpg",
+                "images/solar-panel.jpg",
+                "images/solar-charging.jpg"
+            ],
             students: "Form 2 Students",
             date: "May 2025",
             description: "A portable device that harnesses solar energy to charge mobile phones in areas with limited electricity.",
@@ -134,7 +154,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 5,
             title: "Recycled Materials School Furniture",
             category: "innovation",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/furniture-main.jpg",
+            images: [
+                "images/projects/furniture-main.jpg",
+                "images/projects/furniture-materials.jpg",
+                "images/projects/furniture-finished.jpg"
+            ],
             students: "Form 3 Students",
             date: "January 2025",
             description: "Creating durable and comfortable school furniture using recycled plastics and other waste materials.",
@@ -144,7 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 6,
             title: "Medicinal Plants Database",
             category: "science",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/plants-main.jpg",
+            images: [
+                "images/projects/plants-main.jpg",
+                "images/projects/plants-collection.jpg",
+                "images/projects/plants-database.jpg"
+            ],
             students: "Form 3 Students",
             date: "March 2025",
             description: "A comprehensive study and cataloging of local medicinal plants and their traditional uses.",
@@ -154,7 +184,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 7,
             title: "Eco-Friendly Brick Production",
             category: "engineering",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/brick-main.jpg",
+            images: [
+                "images/projects/brick-main.jpg",
+                "images/projects/brick-materials.jpg",
+                "images/projects/brick-production.jpg"
+            ],
             students: "Form 2 Students",
             date: "April 2025",
             description: "Development of a method to produce construction bricks using agricultural waste and minimal cement.",
@@ -164,7 +199,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 8,
             title: "Machine Learning Weather Prediction",
             category: "technology",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/weather-main.jpg",
+            images: [
+                "images/projects/weather-main.jpg",
+                "images/projects/weather-data.jpg",
+                "images/projects/weather-prediction.jpg"
+            ],
             students: "Form 4 Students",
             date: "February 2025",
             description: "Using historical weather data to create a machine learning model that predicts local weather patterns.",
@@ -174,7 +214,12 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 9,
             title: "Affordable Wind Turbine Design",
             category: "innovation",
-            image: "/api/placeholder/600/400",
+            image: "images/projects/turbine-main.jpg",
+            images: [
+                "images/projects/turbine-main.jpg",
+                "images/projects/turbine-design.jpg",
+                "images/projects/turbine-testing.jpg"
+            ],
             students: "Form 1 Students",
             date: "May 2025",
             description: "Small-scale wind turbines designed with locally available materials for rural electrification.",
@@ -182,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
     
-    // Project detail data (would typically come from an API/database)
+    // Project detail data (would typically come from an API/database) - Updated with images array
     const projectDetails = {
         1: {
             title: "Smart Agricultural Irrigation System",
@@ -190,7 +235,11 @@ document.addEventListener('DOMContentLoaded', function() {
             students: ["John Kamau", "Mary Wanjiku", "Peter Odhiambo"],
             supervisor: "Mrs. Jane Njeri",
             date: "April 2025",
-            images: ["/api/placeholder/800/500", "/api/placeholder/400/300", "/api/placeholder/400/300"],
+            images: [
+                "images/projects/irrigation-main.jpg",
+                "images/projects/irrigation-sensors.jpg", 
+                "images/projects/irrigation-system.jpg"
+            ],
             problem: "Inefficient water usage in agriculture leads to wasted resources and lower crop yields, especially in drought-prone areas.",
             solution: "Our system uses Arduino-based soil moisture sensors to detect when plants need water and automatically activates irrigation. The system is solar-powered and can be monitored via a simple mobile application.",
             methodology: "We developed a prototype using Arduino microcontrollers, soil moisture sensors, and solenoid valves. The system was tested on a small plot growing kale and compared to traditional watering methods.",
