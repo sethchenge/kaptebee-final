@@ -130,7 +130,39 @@ html {
 .navbar-toggler:focus {
     box-shadow: none;
 }
+/* Logo styling for navbar */
+.navbar-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 12px;
+    vertical-align: middle;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
 
+/* Optional hover effect for logo */
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Ensure brand elements align properly */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand-text {
+    line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 35px;
+        margin-right: 8px;
+    }
+}
 /* Hero Banner */
 .hero-banner {
     background: linear-gradient(135deg, var(--primary-green), var(--light-green));

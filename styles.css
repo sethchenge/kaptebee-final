@@ -101,6 +101,40 @@ h1, h2, h3, h4, h5, h6 {
     transform-origin: left;
 }
 
+/* Logo styling for navbar */
+.navbar-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 12px;
+    vertical-align: middle;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+/* Optional hover effect for logo */
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Ensure brand elements align properly */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand-text {
+    line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 35px;
+        margin-right: 8px;
+    }
+}
+
 /* Sidebar Styles */
 .sidebar {
     position: fixed;
