@@ -201,24 +201,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const additionalNews = [
             {
                 category: 'sports',
-                title: 'Swimming Team Qualifies for Nationals',
-                content: 'Our swimming team has qualified for the national championships after winning the regional swimming competition.',
+                title: 'Football Team Qualifies for Semi-Finals',
+                content: 'Our football team has qualified for the semi-finals after winning the pooling football competition.',
                 date: { day: '25', month: 'Mar' },
-                image: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=400&h=250&fit=crop'
+                image: 'images/news/sportsfootball.jpg'
             },
             {
                 category: 'academics',
                 title: 'STEM Laboratory Equipment Upgrade',
-                content: 'The school has invested in new state-of-the-art laboratory equipment to enhance our science programs.',
+                content: 'The school has invested in new state-of-the-Tech laboratory equipment to enhance our science programs.',
                 date: { day: '22', month: 'Mar' },
-                image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=250&fit=crop'
+                image: 'images/news/ICTlab.jpeg'
             },
             {
                 category: 'events',
-                title: 'Alumni Mentorship Program Launch',
-                content: 'Former students return to share their experiences and mentor current students in various career paths.',
-                date: { day: '18', month: 'Mar' },
-                image: 'https://images.unsplash.com/photo-1521737604893-d14cc237c11d?w=400&h=250&fit=crop'
+                title: 'Launching of the Multi-Purpose Hall',
+                content: 'The school together with the local community headed by MP is excited to announce the launching of the new multi-purpose hall.',
+                date: { day: '1', month: 'July' },
+                image: 'images/news/multipurposehall.jpg'
             }
         ];
 

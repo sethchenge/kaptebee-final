@@ -441,7 +441,7 @@ footer .social-icons a {
 
 footer .social-icons a:hover {
     transform: translateY(-3px) scale(1.2);
-    color: #023613 !important;
+    color: hsl(0, 12%, 97%) !important;
 }
 
 footer .contact-info p {
@@ -449,7 +449,7 @@ footer .contact-info p {
 }
 
 footer .contact-info p:hover {
-    color: #055c02;
+    color: #1743bd;
     transform: translateX(5px);
 }
 
