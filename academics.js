@@ -1,44 +1,174 @@
-// Sidebar functionality
+// Enhanced Navigation + Academics functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // ===== NAVIGATION FUNCTIONALITY (Enhanced) =====
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const closeSidebar = document.getElementById('closeSidebar');
     const mainContent = document.querySelector('.main-content');
-
-    // Toggle sidebar on mobile
-    sidebarToggle.addEventListener('click', function() {
-        sidebar.classList.add('active');
-        document.body.classList.add('sidebar-open');
-    });
-
-    // Close sidebar
-    closeSidebar.addEventListener('click', function() {
-        sidebar.classList.remove('active');
-        document.body.classList.remove('sidebar-open');
-    });
-
-    // Close sidebar when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target) && sidebar.classList.contains('active')) {
-            sidebar.classList.remove('active');
-            document.body.classList.remove('sidebar-open');
+    
+    // Auto-close timer variables
+    let autoCloseTimer = null;
+    let timerElement = null;
+    
+    // Create overlay element
+    const overlay = createOverlay();
+    document.body.appendChild(overlay);
+    
+    // Create timer display element
+    createTimerElement();
+    
+    // Navigation Event listeners
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+    }
+    
+    if (closeSidebar) {
+        closeSidebar.addEventListener('click', closeSidebarHandler);
+    }
+    
+    // Close sidebar when clicking overlay
+    overlay.addEventListener('click', closeSidebarHandler);
+    
+    // Close sidebar with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            closeSidebarHandler();
         }
     });
-
+    
     // Handle window resize
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 992) {
-            sidebar.classList.remove('active');
-            document.body.classList.remove('sidebar-open');
+        if (window.innerWidth >= 992 && sidebar.classList.contains('active')) {
+            closeSidebarHandler();
         }
     });
-
+    
+    // Set active navigation link
+    setActiveNavLink();
+    
+    // Navigation Functions
+    function createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        return overlay;
+    }
+    
+    function createTimerElement() {
+        if (sidebar) {
+            timerElement = document.createElement('div');
+            timerElement.className = 'sidebar-timer';
+            timerElement.textContent = 'Auto-closing in 5s';
+            sidebar.appendChild(timerElement);
+        }
+    }
+    
+    function toggleSidebar() {
+        if (sidebar.classList.contains('active')) {
+            closeSidebarHandler();
+        } else {
+            openSidebar();
+        }
+    }
+    
+    function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Start auto-close timer
+        startAutoCloseTimer();
+        
+        // Focus management
+        setTimeout(() => {
+            if (closeSidebar) closeSidebar.focus();
+        }, 300);
+    }
+    
+    function closeSidebarHandler() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Clear the auto-close timer
+        clearAutoCloseTimer();
+    }
+    
+    function startAutoCloseTimer() {
+        let timeLeft = 5;
+        
+        if (timerElement) {
+            timerElement.classList.add('active');
+            updateTimerDisplay(timeLeft);
+        }
+        
+        autoCloseTimer = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay(timeLeft);
+            
+            if (timeLeft <= 0) {
+                closeSidebarHandler();
+            }
+        }, 1000);
+    }
+    
+    function clearAutoCloseTimer() {
+        if (autoCloseTimer) {
+            clearInterval(autoCloseTimer);
+            autoCloseTimer = null;
+        }
+        
+        if (timerElement) {
+            timerElement.classList.remove('active');
+        }
+    }
+    
+    function updateTimerDisplay(seconds) {
+        if (timerElement) {
+            timerElement.textContent = `Auto-closing in ${seconds}s`;
+        }
+    }
+    
+    function setActiveNavLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkHref = link.getAttribute('href');
+            
+            if (linkHref === currentPage || 
+                (currentPage === '' && linkHref === 'index.html') ||
+                (currentPage === 'academics.html' && linkHref === 'academics.html')) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Pause auto-close timer on user interaction
+    if (sidebar) {
+        sidebar.addEventListener('mouseenter', clearAutoCloseTimer);
+        sidebar.addEventListener('mouseleave', function() {
+            if (sidebar.classList.contains('active')) {
+                startAutoCloseTimer();
+            }
+        });
+        sidebar.addEventListener('touchstart', clearAutoCloseTimer);
+        sidebar.addEventListener('click', clearAutoCloseTimer);
+    }
+    
+    // ===== ACADEMICS PAGE FUNCTIONALITY =====
+    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                // Close sidebar if open
+                if (sidebar.classList.contains('active')) {
+                    closeSidebarHandler();
+                }
+                
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -89,13 +219,15 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const statNumber = entry.target.querySelector('h3');
-                const targetValue = statNumber.textContent.replace(/[^\d]/g, '');
-                const suffix = statNumber.textContent.replace(/[\d]/g, '');
-                
-                statNumber.textContent = '0' + suffix;
-                animateCounter(statNumber, parseInt(targetValue));
-                
-                statsObserver.unobserve(entry.target);
+                if (statNumber) {
+                    const targetValue = statNumber.textContent.replace(/[^\d]/g, '');
+                    const suffix = statNumber.textContent.replace(/[\d]/g, '');
+                    
+                    statNumber.textContent = '0' + suffix;
+                    animateCounter(statNumber, parseInt(targetValue));
+                    
+                    statsObserver.unobserve(entry.target);
+                }
             }
         });
     }, observerOptions);
@@ -144,10 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dynamic navbar background
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
     });
 
@@ -215,15 +349,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initializeSearch();
-
-    // Add keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        // ESC key closes sidebar
-        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-            sidebar.classList.remove('active');
-            document.body.classList.remove('sidebar-open');
-        }
-    });
 
     // Progressive enhancement for touch devices
     if ('ontouchstart' in window) {

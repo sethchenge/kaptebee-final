@@ -3,22 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events & Gallery - Kaptebee Secondary School</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Lightbox CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="events.css">
-    <link rel="stylesheet" href="transitions.css">
-        <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <title>Events & Gallery - Kaptebee High School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="events.css" rel="stylesheet">
+    <link href="navigation.css" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar Navigation for mobile -->
@@ -95,71 +84,128 @@
             </div>
         </nav>
 
-        <!-- Hero Banner -->
-        <section class="hero-banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h1 class="hero-title">Events & Gallery</h1>
-                        <p class="hero-subtitle">Celebrating moments of learning, achievement, and creativity at Kaptebee Secondary School</p>
-                    </div>
-                </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Events & Gallery</h1>
+                <p class="hero-subtitle">Celebrating achievements and creating memories</p>
+                <div class="hero-decoration"></div>
             </div>
         </section>
 
-        <!-- Upcoming Events Section -->
-        <section class="upcoming-events-section" id="upcoming-events">
+        <!-- Events Section -->
+        <section class="events-section py-5">
             <div class="container">
-                <h2 class="section-title">Upcoming Events</h2>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4 event-item">
-                        <div class="card event-card">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">School Events</h2>
+                    <p class="section-subtitle">Exciting activities that shape our students' experiences</p>
+                </div>
+
+                <div class="row">
+                    <!-- Inter-House Drama Competition -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">AUG</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Inter-House Drama Competition</h4>
+                                <p class="event-description">Annual drama competition where all four houses showcase their theatrical talents. This year's theme: "Kenyan Heroes and Heroines"</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 2:00 PM - 6:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> School Hall</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Excellence Awards -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">22</span>
+                                <span class="month">AUG</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Academic Excellence Awards</h4>
+                                <p class="event-description">Recognizing outstanding academic performance across all subjects. Parents and guardians are invited to celebrate with us.</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 10:00 AM - 12:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Multipurpose Hall</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sports Day -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">05</span>
+                                <span class="month">SEP</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Annual Sports Day</h4>
+                                <p class="event-description">Inter-house athletics competition featuring track and field events, football, netball, and traditional games like "Kigogo" and "Bao".</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 8:00 AM - 5:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> School Playground</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Science & Innovation Fair -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">12</span>
+                                <span class="month">SEP</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Science & Innovation Fair</h4>
+                                <p class="event-description">Students showcase innovative projects solving local challenges. Special focus on sustainable agriculture and renewable energy solutions.</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 9:00 AM - 4:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Science Laboratory</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Day -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="event-card">
                             <div class="event-date">
                                 <span class="day">25</span>
-                                <span class="month">MAY</span>
+                                <span class="month">SEP</span>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Annual Science Fair</h5>
-                                <p class="card-text">Students showcase innovative STEM projects and compete for top honors in our annual science exhibition.</p>
-                                <div class="event-details">
-                                    <p><i class="fas fa-clock"></i> 9:00 AM - 4:00 PM</p>
-                                    <p><i class="fas fa-map-marker-alt"></i> School Auditorium</p>
+                            <div class="event-content">
+                                <h4 class="event-title">Kenyan Cultural Heritage Day</h4>
+                                <p class="event-description">Celebrating Kenya's rich cultural diversity through traditional dances, music, poetry, and cuisine from different ethnic communities.</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 11:00 AM - 4:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> School Compound</span>
                                 </div>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal1">Learn More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 event-item">
-                        <div class="card event-card">
+
+                    <!-- Career Guidance Week -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="event-card">
                             <div class="event-date">
-                                <span class="day">10</span>
-                                <span class="month">JUN</span>
+                                <span class="day">08</span>
+                                <span class="month">OCT</span>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Robotics Competition</h5>
-                                <p class="card-text">Our robotics team competes in the regional championship with their innovative robot designs.</p>
-                                <div class="event-details">
-                                    <p><i class="fas fa-clock"></i> 10:00 AM - 3:00 PM</p>
-                                    <p><i class="fas fa-map-marker-alt"></i> Innovation Hub</p>
+                            <div class="event-content">
+                                <h4 class="event-title">Career Guidance Week</h4>
+                                <p class="event-description">Guest speakers from various professions share insights on career paths, university choices, and entrepreneurship opportunities in Kenya.</p>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> Daily 2:00 PM - 4:00 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Library Hall</span>
                                 </div>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal2">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 event-item">
-                        <div class="card event-card">
-                            <div class="event-date">
-                                <span class="day">18</span>
-                                <span class="month">JUN</span>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Entrepreneurship Day</h5>
-                                <p class="card-text">Students present business plans and showcase their startups to potential investors and mentors.</p>
-                                <div class="event-details">
-                                    <p><i class="fas fa-clock"></i> 1:00 PM - 5:00 PM</p>
-                                    <p><i class="fas fa-map-marker-alt"></i> Multi-purpose Hall</p>
-                                </div>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal3">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -168,198 +214,78 @@
         </section>
 
         <!-- Gallery Section -->
-        <section class="gallery-section" id="gallery">
+        <section class="gallery-section py-5">
             <div class="container">
-                <h2 class="section-title">Photo Gallery</h2>
-                
-                <!-- Gallery Filter -->
-                <div class="gallery-filter">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="academics">Academics</button>
-                    <button class="filter-btn" data-filter="sports">Sports</button>
-                    <button class="filter-btn" data-filter="cultural">Cultural</button>
-                    <button class="filter-btn" data-filter="tech">Tech</button>
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Photo Gallery</h2>
+                    <p class="section-subtitle">Capturing moments that matter</p>
                 </div>
-                
-                <div class="row g-4 gallery-container">
-                    <!-- Academic Images -->
-                    <div class="col-md-6 col-lg-4 gallery-item academics">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Science Class Experiment">
-                            <div class="gallery-card">
-                                <img src="images/science experiment.jpeg" alt="Science class experiment" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Science Class Experiment</h5>
-                                        <p>Students conducting chemistry experiments</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gallery-item academics">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Math Competition">
-                            <div class="gallery-card">
-                                <img src="images/annual science fair.jpg" alt="Math competition" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Math Competition</h5>
-                                        <p>Regional mathematics olympiad</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <!-- Sports Images -->
-                    <div class="col-md-6 col-lg-4 gallery-item sports">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Athletics Competition">
-                            <div class="gallery-card">
-                                <img src="images/athletics.jpeg" alt="Athletics" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Athletics Competition</h5>
-                                        <p>Annual inter-school track and field event</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gallery-item sports">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Basketball Tournament">
-                            <div class="gallery-card">
-                                <img src="images/sports3.jpg" alt="Basketball" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Basketball Tournament</h5>
-                                        <p>School team's championship match</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <!-- Cultural Images -->
-                    <div class="col-md-6 col-lg-4 gallery-item cultural">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Annual Cultural Day">
-                            <div class="gallery-card">
-                                <img src="images/culturalday.jpeg" alt="Cultural day" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Annual Cultural Day</h5>
-                                        <p>Celebrating diversity through traditional performances</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gallery-item cultural">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Music Concert">
-                            <div class="gallery-card">
-                                <img src="images/musicfestival.png" alt="Music concert" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Music Concert</h5>
-                                        <p>School choir and orchestra performance</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <!-- Tech Images -->
-                    <div class="col-md-6 col-lg-4 gallery-item tech">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Robotics Workshop">
-                            <div class="gallery-card">
-                                <img src="images/robotics workshop.png" alt="Robotics workshop" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Robotics Workshop</h5>
-                                        <p>Students building and programming robots</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gallery-item tech">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="Coding Hackathon">
-                            <div class="gallery-card">
-                                <img src="images/coding.jpeg" alt="Coding hackathon" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>Coding Hackathon</h5>
-                                        <p>24-hour coding marathon for innovative solutions</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 gallery-item tech">
-                        <a href="/api/placeholder/800/600" data-lightbox="school-gallery" data-title="3D Printing Project">
-                            <div class="gallery-card">
-                                <img src="images/3d printing.png" alt="3D printing" class="img-fluid">
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5>3D Printing Project</h5>
-                                        <p>Students creating prototypes with 3D printers</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-5">
-                    <button id="loadMoreGallery" class="btn btn-outline-primary">Load More</button>
-                </div>
-            </div>
-        </section>
 
-        <!-- Past Events Section with Timeline -->
-        <section class="past-events-section" id="past-events">
-            <div class="container">
-                <h2 class="section-title">Past Events</h2>
-                <div class="timeline">
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <div class="date">April 15, 2025</div>
-                            <h3>Environmental Day</h3>
-                            <p>Students participated in tree planting and environmental conservation activities around the school and community.</p>
-                            <div class="timeline-gallery">
-                                <img src="resources/environmental day .jpg" alt="Environmental day" class="img-fluid">
-                                <img src="images/treeplant2.jpg" alt="Tree planting" class="img-fluid">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="gallery-image">
+                                <img src="images/gallary/chaplain.jpg" alt="School chaplain">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5>Welcoming of the CU chaplain</h5>
+                                        <p>The whole school community came together to welcome the new chaplain.</p>
+                                        <button class="btn btn-light btn-sm" onclick="openModal(0)">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <div class="date">March 22, 2025</div>
-                            <h3>International Science Olympiad</h3>
-                            <p>Our students represented the school at the International Science Olympiad, bringing home silver and bronze medals.</p>
-                            <div class="timeline-gallery">
-                                <img src="resources/international olympiad .jpg" alt="Science olympiad" class="img-fluid">
-                                <img src="images/c.jpeg" alt="Award ceremony" class="img-fluid">
+
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="gallery-image">
+                                <img src="images/gallary/sports.jpg" alt="Inter-House Sports Competition">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5>Sports Day 2025</h5>
+                                        <p>Annual zonals competition</p>
+                                        <button class="btn btn-light btn-sm" onclick="openModal(1)">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <div class="date">February 10, 2025</div>
-                            <h3>Career Day</h3>
-                            <p>Professionals from various fields visited to give career guidance and mentorship to our students.</p>
-                            <div class="timeline-gallery">
-                                <img src="images/career day.jpeg" alt="Career day" class="img-fluid">
-                                <img src="images/avatar6.jpeg" alt="Professional speaker" class="img-fluid">
+
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="gallery-image">
+                                <img src="images/gallary/ICTmembers2.jpg" alt="Drama Performance">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5>ICT club members session</h5>
+                                        <p>ICT club members working on the school website project.</p>
+                                        <button class="btn btn-light btn-sm" onclick="openModal(2)">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <div class="date">January 25, 2025</div>
-                            <h3>Annual Sports Day</h3>
-                            <p>A day filled with sporting activities, competitions, and team-building exercises for all students.</p>
-                            <div class="timeline-gallery">
-                                <img src="images/sports day.jpg" alt="Sports day" class="img-fluid">
-                                <img src="/api/placeholder/150/100" alt="Medal ceremony" class="img-fluid">
+
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="gallery-image">
+                                <img src="images/gallary/ourmatron.jpg" alt="Family meetings">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5>Thursday family Meeting</h5>
+                                        <p><q>Kate</q>, our chief security officer, happily welcomes matron back to school after a long weekend. A clear indication of how caring and loving matron is</p>
+                                        <button class="btn btn-light btn-sm" onclick="openModal(3)">
+                                            <i class="fas fa-expand"></i> View
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -367,209 +293,86 @@
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center">
-                        <h2>Want to be part of our events?</h2>
-                        <p>Join us for our upcoming events or propose a collaboration. We're always looking for educational partners and community involvement.</p>
-                        <div class="cta-buttons">
-                            <a href="#upcoming-events" class="btn btn-primary">View Upcoming Events</a>
-                            <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
-                        </div>
+        <!-- Modal for Gallery Images -->
+        <div class="modal fade" id="galleryModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">Gallery Image</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImage" src="" alt="" class="img-fluid">
+                        <p id="modalDescription" class="mt-3"></p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <h4>Kaptebee Secondary School</h4>
-                        <p>Nurturing Tomorrow's Leaders Today through innovation, critical thinking, and practical applications.</p>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand">
+                            <img src="images/logo.jpg" alt="Kaptebee School Logo" class="footer-logo">
+                            <h5>Kaptebee Secondary School</h5>
+                            <p>Nurturing Tomorrow's Leaders Today through excellence in education and character development.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <h4>Quick Links</h4>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h6>Quick Links</h6>
                         <ul class="footer-links">
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="academics.html">Academics</a></li>
-                            <li><a href="events.html">Events & Gallery</a></li>
-                            <li><a href="news.html">News & Updates</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="events.html">Events</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4">
-                        <h4>Contact Information</h4>
-                        <ul class="contact-info">
-                            <li><i class="fas fa-map-marker-alt"></i> P.O. Box 398, TURBO, Kenya</li>
-                            <li><i class="fas fa-phone"></i> +254 724588227</li>
-                            <li><i class="fas fa-envelope"></i>kaptebeeschool@gmail.com</li>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h6>Programs</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">CBC Curriculum</a></li>
+                            <li><a href="#">Sports & Games</a></li>
+                            <li><a href="#">Arts & Culture</a></li>
+                            <li><a href="#">Science Club</a></li>
                         </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <h6>Contact Info</h6>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-map-marker-alt"></i> P.O. Box 398 - 30106, TURBO, Kenya</p>
+                            <p><i class="fas fa-phone"></i> +254 724 588 227</p>
+                            <p><i class="fas fa-envelope"></i>kaptebeeschool@gmail.com</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
-                <hr>
+                <hr class="footer-divider">
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="copyright">© 2025 Kaptebee Secondary School. All Rights Reserved.</p>
+                    <div class="col-md-6">
+                        <p class="footer-copyright">&copy; 2024 Kaptebee Secondary School. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="footer-credits">Designed with <i class="fas fa-heart text-danger"></i> for Education</p>
                     </div>
                 </div>
             </div>
         </footer>
     </div>
-
-    <!-- Event Modals -->
-    <div class="modal fade" id="eventModal1" tabindex="-1" aria-labelledby="eventModal1Label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventModal1Label">Annual Science Fair</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="images/annual science fair.jpg" alt="Science Fair" class="img-fluid rounded mb-3">
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Event Details</h6>
-                            <ul class="list-unstyled">
-                                <li><strong>Date:</strong> May 25, 2025</li>
-                                <li><strong>Time:</strong> 9:00 AM - 4:00 PM</li>
-                                <li><strong>Location:</strong> School Auditorium</li>
-                                <li><strong>Contact:</strong> Mr. Ng'etich (Director of Innovation)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="event-description mt-4">
-                        <h6>About This Event</h6>
-                        <p>The Annual Science Fair is our flagship event where students showcase their innovative STEM projects. This year's theme is "Sustainable Solutions for a Better Future," focusing on how technology can address environmental challenges.</p>
-                        <p>The event will feature:</p>
-                        <ul>
-                            <li>Project exhibitions from all grade levels</li>
-                            <li>Guest speakers from leading technology companies</li>
-                            <li>Hands-on workshops for visitors</li>
-                            <li>Awards ceremony for outstanding projects</li>
-                        </ul>
-                        <p>Parents, community members, and representatives from local universities and businesses are invited to attend and interact with our young scientists.</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="contact.html" class="btn btn-primary">RSVP</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="eventModal2" tabindex="-1" aria-labelledby="eventModal2Label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventModal2Label">Robotics Competition</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="images/roobotics competition1.jpg" alt="Robotics Competition" class="img-fluid rounded mb-3">
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Event Details</h6>
-                            <ul class="list-unstyled">
-                                <li><strong>Date:</strong> June 10, 2025</li>
-                                <li><strong>Time:</strong> 10:00 AM - 3:00 PM</li>
-                                <li><strong>Location:</strong> Innovation Hub</li>
-                                <li><strong>Contact:</strong> Mr. Magoi (Head of School Department)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="event-description mt-4">
-                        <h6>About This Event</h6>
-                        <p>Our robotics team will be competing in the Regional Robotics Championship, where schools from across the region showcase their robot designs and programming skills.</p>
-                        <p>This year's challenge involves designing robots that can:</p>
-                        <ul>
-                            <li>Navigate complex obstacle courses</li>
-                            <li>Perform automated sorting tasks</li>
-                            <li>Solve real-world problems through engineering solutions</li>
-                        </ul>
-                        <p>Come support our team as they demonstrate months of hard work and innovation!</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="contact.html" class="btn btn-primary">RSVP</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="eventModal3" tabindex="-1" aria-labelledby="eventModal3Label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventModal3Label">Entrepreneurship Day</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="images/kaptebee1.jpg" alt="Entrepreneurship Day" class="img-fluid rounded mb-3">
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Event Details</h6>
-                            <ul class="list-unstyled">
-                                <li><strong>Date:</strong> June 18, 2025</li>
-                                <li><strong>Time:</strong> 1:00 PM - 5:00 PM</li>
-                                <li><strong>Location:</strong> Multi-purpose Hall</li>
-                                <li><strong>Contact:</strong> Prof. Denis Kisembe (Deputy Principal)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="event-description mt-4">
-                        <h6>About This Event</h6>
-                        <p>Entrepreneurship Day is an exciting opportunity for our students to present their business ideas and startup projects to a panel of local entrepreneurs, investors, and business mentors.</p>
-                        <p>The event will include:</p>
-                        <ul>
-                            <li>Student business plan presentations</li>
-                            <li>Product and service demonstrations</li>
-                            <li>Networking opportunities with business professionals</li>
-                            <li>Seed funding competition for the most promising ventures</li>
-                        </ul>
-                        <p>We invite parents, local business owners, and community members to attend and support our young entrepreneurs as they take their first steps into the business world.</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="contact.html" class="btn btn-primary">RSVP</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Back to top button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+    
     <!-- Scripts -->
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    
-    <!-- Custom JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="events.js"></script>
-    <script src="transitions.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>

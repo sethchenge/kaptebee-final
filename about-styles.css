@@ -161,7 +161,7 @@ html {
 
 /* ===== NAVIGATION ===== */
 .navbar {
-    background: var(--white) !important;
+    background: var(--primary-green) !important;
     box-shadow: var(--shadow-light);
     padding: 15px 0;
     position: sticky;
