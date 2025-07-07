@@ -1030,6 +1030,21 @@ body {
     animation: pulse 2s ease-in-out infinite alternate;
 }
 
+/* ICT Club teacher name css */
+.club-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 80px;
+}
+
+.club-name {
+    color: #08b837;
+}
+
+.teacher-title {
+    color: #000;
+}
+
 .profile-image {
     position: absolute;
     top: 12px;
