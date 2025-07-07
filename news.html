@@ -11,27 +11,63 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="news.css">
     <link rel="stylesheet" href="navigation.css">
         <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
 </head>
 <body>
+    <!-- Sidebar Navigation for mobile -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button id="closeSidebar" class="btn close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="academics.html">Academics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">Events & Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">News & Updates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Student Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<!-- Main content -->
+<div class="main-content">
     <!-- Top Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.html">
+            <a class="navbar-brand" href="index.html">
                 <img src="images/logo.jpg" alt="Kaptebee School Logo" class="navbar-logo">
-                <!-- <i class="bi bi-mortarboard-fill me-2"></i> -->
                 <span class="brand-text">Kaptebee School</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button id="sidebarToggle" class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About Us</a>
@@ -43,7 +79,7 @@
                         <a class="nav-link" href="events.html">Events & Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="news.html">News & Updates</a>
+                        <a class="nav-link" href="news.html">News & Updates</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="projects.html">Student Projects</a>
@@ -55,7 +91,7 @@
             </div>
         </div>
     </nav>
-
+    
     <!-- Header Section -->
     <header class="hero-header py-5 text-center">
         <div class="container">

@@ -1,5 +1,15 @@
 /* Custom CSS for Kaptebee School News Section */
-
+:root {
+    --primary-color: #2e7d32;      /* Dark Green */
+    --primary-light: #60ad5e;      /* Light Green */
+    --primary-dark: #005005;       /* Very Dark Green */
+    --accent-color: #43a047;       /* Medium Green */
+    --text-light: #ffffff;
+    --text-dark: #212121;
+    --bg-light: #f5f5f5;
+    --bg-gray: #eeeeee;
+    --transition-speed: 0.3s;
+}
 /* Global Styles */
 * {
     box-sizing: border-box;
@@ -12,53 +22,62 @@ body {
     background-color: #fff;
 }
 
-/* Navigation Styles */
+/* Navbar Styles */
 .navbar {
-    background-color: #fff !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed);
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-light);
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all var(--transition-speed);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    background-color: var(--primary-light);
+    color: var(--text-light);
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: #28a745 !important;
-    transition: all 0.3s ease;
+    color: var(--text-light);
 }
 
-.navbar-brand:hover {
-    transform: scale(1.05);
-}
-
-.nav-link {
-    font-weight: 500;
-    color: #333 !important;
-    margin: 0 0.5rem;
-    transition: all 0.3s ease;
+.brand-text {
     position: relative;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: #28a745 !important;
-}
-
-.nav-link::after {
+.brand-text::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
     bottom: -5px;
-    left: 50%;
-    background-color: #28a745;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-light);
+    transform: scaleX(0);
+    transition: transform var(--transition-speed);
+    transform-origin: right;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
+.navbar-brand:hover .brand-text::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
+
 /* Logo styling for navbar */
 .navbar-logo {
     height: 50px;
@@ -85,6 +104,69 @@ body {
     line-height: 1;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 35px;
+        margin-right: 8px;
+    }
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background-color: var(--primary-dark);
+    z-index: 1050;
+    transition: all var(--transition-speed);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: flex-end;
+}
+.close-btn {
+    color: var(--text-light);
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.close-btn:hover {
+    color: var(--bg-light);
+}
+.sidebar .nav-link {
+    color: var(--text-light);
+    padding: 1rem 1.5rem;
+    transition: all var(--transition-speed);
+    border-left: 4px solid transparent;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--primary-color);
+    border-left-color: var(--text-light);
+}
+
+/* Main Content */
+.main-content {
+    transition: margin-left var(--transition-speed);
+}
+
+.main-content.sidebar-active {
+    margin-left: 280px;
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .navbar-logo {

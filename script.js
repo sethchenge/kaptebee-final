@@ -1,46 +1,39 @@
-
 // Video Section JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('playButton');
     const videoOverlay = document.querySelector('.video-overlay');
     const iframe = document.getElementById('projectVideo');
+    const videoFrame = document.querySelector('.video-frame');
+    
+    let originalSrc = iframe.src;
+    
+    // Remove autoplay from URL if present
+    if (originalSrc.includes('autoplay=1')) {
+        originalSrc = originalSrc.replace(/[?&]autoplay=1/g, '');
+    }
+    
+    // Load video without autoplay
+    iframe.src = originalSrc;
     
     // Play button click handler
     if (playButton) {
         playButton.addEventListener('click', function() {
-            // Hide overlay with smooth transition
+            // Hide overlay
             videoOverlay.classList.add('hidden');
             
-            // Add autoplay parameter to iframe src if it's a video file
-            let currentSrc = iframe.src;
-            if (currentSrc && !currentSrc.includes('autoplay')) {
-                // For video files, you might need to handle this differently
-                // This is a basic implementation
-                if (currentSrc.includes('.mp4') || currentSrc.includes('.webm') || currentSrc.includes('.ogg')) {
-                    iframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'autoplay=1';
-                }
-            }
+            // Add autoplay to URL and reload
+            const separator = originalSrc.includes('?') ? '&' : '?';
+            iframe.src = originalSrc + separator + 'autoplay=1';
             
-            // Add some visual feedback
-            playButton.style.transform = 'scale(0.8)';
+            // Visual feedback for button
+            playButton.style.transform = 'scale(0.9)';
             setTimeout(() => {
-                playButton.style.transform = 'scale(1.1)';
-            }, 100);
-        });
-    }
-    
-    // Optional: Show overlay again if video ends (for video files)
-    if (iframe) {
-        iframe.addEventListener('ended', function() {
-            videoOverlay.classList.remove('hidden');
+                playButton.style.transform = 'scale(1)';
+            }, 150);
         });
     }
     
     // Add entrance animation when section comes into view
-    const videoSection = document.querySelector('.video-section');
-    const videoFrame = document.querySelector('.video-frame');
-    
-    // Intersection Observer for entrance animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -61,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(videoFrame);
     }
     
-    // Enhanced hover effects
+    // Enhanced hover effects for the frame
     if (videoFrame) {
         videoFrame.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px) scale(1.02)';
