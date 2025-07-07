@@ -326,3 +326,197 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// GSAP Animations
+gsap.registerPlugin();
+
+// Profile container entrance animation
+gsap.from(".profile-container", {
+    duration: 2,
+    scale: 0,
+    rotation: 360,
+    ease: "elastic.out(1, 0.5)",
+    delay: 0.5
+});
+
+// Border animation enhancement
+gsap.to(".profile-border", {
+    duration: 3,
+    rotation: 360,
+    repeat: -1,
+    ease: "none"
+});
+
+// Additional rotating animation for the pseudo-elements
+gsap.to(".profile-border::before", {
+    duration: 4,
+    rotation: -360,
+    repeat: -1,
+    ease: "none"
+});
+
+// Glow effect animation
+gsap.to(".glow-effect", {
+    duration: 3,
+    scale: 1.2,
+    opacity: 0.3,
+    repeat: -1,
+    yoyo: true,
+    ease: "power2.inOut"
+});
+
+// Typing animation variables
+const nameText = "Seth Chenge";
+const titleText = "Computer Teacher";
+let nameIndex = 0;
+let titleIndex = 0;
+let isTypingName = true;
+let isDeleting = false;
+
+const nameElement = document.getElementById('typingName');
+const titleElement = document.getElementById('typingTitle');
+
+function typeWriter() {
+    if (isTypingName) {
+        if (!isDeleting) {
+            if (nameIndex < nameText.length) {
+                nameElement.textContent += nameText.charAt(nameIndex);
+                nameIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(() => {
+                    isTypingName = false;
+                    titleIndex = 0;
+                    typeWriter();
+                }, 1000);
+            }
+        } else {
+            if (nameIndex > 0) {
+                nameElement.textContent = nameText.substring(0, nameIndex - 1);
+                nameIndex--;
+                setTimeout(typeWriter, 50);
+            } else {
+                isDeleting = false;
+                setTimeout(typeWriter, 500);
+            }
+        }
+    } else {
+        if (!isDeleting) {
+            if (titleIndex < titleText.length) {
+                titleElement.textContent += titleText.charAt(titleIndex);
+                titleIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typeWriter();
+                }, 2000);
+            }
+        } else {
+            if (titleIndex > 0) {
+                titleElement.textContent = titleText.substring(0, titleIndex - 1);
+                titleIndex--;
+                setTimeout(typeWriter, 50);
+            } else {
+                titleIndex = 0;
+                setTimeout(() => {
+                    isDeleting = true;
+                    isTypingName = true;
+                    nameIndex = nameText.length;
+                    typeWriter();
+                }, 500);
+            }
+        }
+    }
+}
+
+// Start typing animation after profile loads
+gsap.delayedCall(2.5, typeWriter);
+
+// Enhanced profile image hover effects
+const profileContainer = document.querySelector('.profile-container');
+
+profileContainer.addEventListener('mouseenter', () => {
+    gsap.to(profileContainer, {
+        duration: 0.3,
+        scale: 1.1,
+        ease: "power2.out"
+    });
+    
+    gsap.to(".profile-border", {
+        duration: 0.3,
+        boxShadow: "0 0 40px rgba(0, 255, 136, 0.8), 0 0 80px rgba(0, 255, 136, 0.6), 0 0 120px rgba(0, 255, 136, 0.4)",
+        ease: "power2.out"
+    });
+});
+
+profileContainer.addEventListener('mouseleave', () => {
+    gsap.to(profileContainer, {
+        duration: 0.3,
+        scale: 1,
+        ease: "power2.out"
+    });
+    
+    gsap.to(".profile-border", {
+        duration: 0.3,
+        boxShadow: "0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3), 0 0 60px rgba(0, 255, 136, 0.1)",
+        ease: "power2.out"
+    });
+});
+
+// Continuous floating animation
+gsap.to(".profile-container", {
+    duration: 4,
+    y: -20,
+    repeat: -1,
+    yoyo: true,
+    ease: "power2.inOut"
+});
+
+// Random sparkle effects
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.style.position = 'absolute';
+    sparkle.style.width = '4px';
+    sparkle.style.height = '4px';
+    sparkle.style.backgroundColor = '#00ff88';
+    sparkle.style.borderRadius = '50%';
+    sparkle.style.pointerEvents = 'none';
+    sparkle.style.zIndex = '10';
+    
+    const container = document.querySelector('.profile-container');
+    container.appendChild(sparkle);
+    
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 120 + Math.random() * 50;
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    
+    gsap.set(sparkle, {
+        x: 100,
+        y: 100,
+        scale: 0
+    });
+    
+    gsap.to(sparkle, {
+        duration: 2,
+        x: 100 + x,
+        y: 100 + y,
+        scale: 1,
+        opacity: 0,
+        ease: "power2.out",
+        onComplete: () => sparkle.remove()
+    });
+}
+
+// Create sparkles periodically
+setInterval(createSparkle, 800);
+
+// Text glow animations
+gsap.to(".name-main", {
+    duration: 2,
+    textShadow: "0 0 20px rgba(0, 255, 136, 0.8)",
+    repeat: -1,
+    yoyo: true,
+    ease: "power2.inOut"
+});
