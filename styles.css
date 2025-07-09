@@ -745,7 +745,18 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 1rem;
         display: inline-block;
     }
-    
+        /* Stack buttons vertically on very small screens */
+    @media (max-width: 768px) {
+        .top-buttons .btn {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 0.75rem;
+        }
+        
+        .top-buttons .btn:last-child {
+            margin-bottom: 5px;
+        }
+    }
     /* Stack buttons vertically on very small screens */
     @media (max-width: 480px) {
         .top-buttons .btn {
