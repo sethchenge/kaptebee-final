@@ -758,7 +758,7 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
     /* Stack buttons vertically on very small screens */
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
         .top-buttons .btn {
             display: inline-block;
             width: 100%;
