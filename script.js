@@ -6,14 +6,72 @@ document.addEventListener('DOMContentLoaded', function() {
     const videoFrame = document.querySelector('.video-frame');
 
     let originalSrc = iframe.src;
+    let hasNavigatedAway = false;
 
     // Remove autoplay from URL if present
     if (originalSrc.includes('autoplay=1')) {
         originalSrc = originalSrc.replace(/[?&]autoplay=1/g, '');
     }
 
-    // Load video without autoplay
+    // Check if user has navigated away from home page before
+    function checkNavigationHistory() {
+        // Check session storage for navigation flag
+        const navigationFlag = sessionStorage.getItem('hasNavigatedFromHome');
+        if (navigationFlag === 'true') {
+            hasNavigatedAway = true;
+        }
+    }
+
+    // Track navigation away from home page
+    function trackNavigation() {
+        // Listen for clicks on navigation links
+        const navLinks = document.querySelectorAll('a[href]:not([href^="#"]):not([href^="javascript:"]):not([target="_blank"])');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                // Check if it's an internal navigation (not home page)
+                if (href && !href.includes('index.html') && !href.endsWith('/') && href !== '#') {
+                    sessionStorage.setItem('hasNavigatedFromHome', 'true');
+                    hasNavigatedAway = true;
+                }
+            });
+        });
+
+        // Also track browser navigation events
+        window.addEventListener('beforeunload', function() {
+            // Only set flag if we're navigating to a different page
+            if (!window.location.href.includes('#')) {
+                sessionStorage.setItem('hasNavigatedFromHome', 'true');
+            }
+        });
+    }
+
+    // Reset video state when returning to home
+    function resetVideoState() {
+        if (hasNavigatedAway) {
+            // Stop any playing video
+            iframe.src = originalSrc;
+            
+            // Show overlay again
+            if (videoOverlay) {
+                videoOverlay.classList.remove('hidden');
+            }
+            
+            // Reset any video playing state
+            console.log('Video reset due to navigation back to home');
+        }
+    }
+
+    // Initialize navigation tracking
+    checkNavigationHistory();
+    trackNavigation();
+
+    // Load video without autoplay initially
     iframe.src = originalSrc;
+
+    // Reset video state if user navigated back
+    resetVideoState();
 
     // Play button click handler
     if (playButton) {
@@ -30,6 +88,15 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 playButton.style.transform = 'scale(1)';
             }, 150);
+        });
+    }
+
+    // Clear navigation flag when video is manually played
+    // This prevents unnecessary resets if user plays video after navigation
+    if (playButton) {
+        playButton.addEventListener('click', function() {
+            sessionStorage.removeItem('hasNavigatedFromHome');
+            hasNavigatedAway = false;
         });
     }
 
@@ -64,4 +131,12 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
     }
+
+    // Optional: Clear navigation flag when page is refreshed directly
+    window.addEventListener('load', function() {
+        // If page was refreshed directly (not navigated to), clear the flag
+        if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+            sessionStorage.removeItem('hasNavigatedFromHome');
+        }
+    });
 });
